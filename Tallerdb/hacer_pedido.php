@@ -19,4 +19,3 @@ if (mysqli_query($conn, $sql)) {
     header("Location: productos.php?msg=Error al realizar el pedido");
     exit();
 }
-?>
