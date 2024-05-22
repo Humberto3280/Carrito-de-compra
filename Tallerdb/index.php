@@ -49,16 +49,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </form>
             </div>
         <?php else: ?>
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="alert alert-success m-0" role="alert">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="index.php">Tienda en Línea</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.php">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="productos.php">Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pedidos.php">Tus Pedidos</a>
+                        </li>
+                    </ul>
+                    <a href="logout.php" class="btn btn-danger btn-sm">
+                        <i class="fas fa-sign-out-alt"></i> Salir
+                    </a>
+                </div>
+            </nav>
+            <div id="home" class="mt-4">
+                <div class="alert alert-success" role="alert">
                     Bienvenido, <?php echo $_SESSION['nombre']; ?>. Has iniciado sesión correctamente.
                 </div>
-                <a href="logout.php" class="btn btn-danger btn-sm">
-                    <i class="fas fa-sign-out-alt"></i> Salir
-                </a>
             </div>
-            <!-- Aquí puedes agregar más contenido para la página principal -->
         <?php endif; ?>
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
