@@ -112,6 +112,9 @@ function obtenerPedidos($conn, $usuario_id) {
                                     <a href="editar_pedido.php?id=<?php echo $pedido['pedido_id']; ?>" class="btn btn-warning btn-sm">
                                         <i class="fas fa-edit"></i> Editar
                                     </a>
+                                    <a href="eliminar_pedido.php?id=<?php echo $pedido['pedido_id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que quieres eliminar este pedido?');">
+                                        <i class="fas fa-trash"></i> Eliminar
+                                    </a>
                                 </td>
                             </tr>
                         <?php endwhile; ?>
