@@ -79,6 +79,12 @@ function obtenerPedidos($conn, $usuario_id) {
                                 <td><?php echo $pedido['cantidad']; ?></td>
                                 <td><?php echo $pedido['fecha']; ?></td>
                                 <td>
+                                    <a href="ver_pedido.php?id=<?php echo $pedido['pedido_id']; ?>" class="btn btn-info btn-sm">
+                                        <i class="fas fa-eye"></i> Ver
+                                    </a>
+                                    <a href="editar_pedido.php?id=<?php echo $pedido['pedido_id']; ?>" class="btn btn-warning btn-sm">
+                                        <i class="fas fa-edit"></i> Editar
+                                    </a>
                                     <a href="eliminar_pedido.php?id=<?php echo $pedido['pedido_id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que quieres eliminar este pedido?');">
                                         <i class="fas fa-trash"></i> Eliminar
                                     </a>
