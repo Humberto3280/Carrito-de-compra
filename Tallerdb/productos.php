@@ -86,6 +86,11 @@ $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : '';
                 </div>
                 <button type="submit" class="btn btn-primary">Filtrar</button>
             </form>
+            <?php if (isset($_GET['msg'])): ?>
+                <div class="alert alert-info">
+                    <?php echo htmlspecialchars($_GET['msg']); ?>
+                </div>
+            <?php endif; ?>
             <?php
             $productos = obtenerProductos($conn, $nombre, $categoria);
             if (mysqli_num_rows($productos) > 0): ?>
@@ -96,6 +101,7 @@ $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : '';
                             <th>Nombre</th>
                             <th>Precio</th>
                             <th>Categoría</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -105,6 +111,11 @@ $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : '';
                                 <td><?php echo $producto['nombre']; ?></td>
                                 <td><?php echo $producto['precio']; ?></td>
                                 <td><?php echo $producto['categoria']; ?></td>
+                                <td>
+                                    <a href="hacer_pedido.php?producto_id=<?php echo $producto['id']; ?>" class="btn btn-success btn-sm" onclick="return confirm('¿Estás seguro de que quieres pedir este producto?');">
+                                        <i class="fas fa-shopping-cart"></i> Pedir
+                                    </a>
+                                </td>
                             </tr>
                         <?php endwhile; ?>
                     </tbody>

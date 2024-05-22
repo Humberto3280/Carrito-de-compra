@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "db_carrito_tienda";
+$dbname = "tienda_online";
 
 // Crear conexión
 $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -11,3 +11,4 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
     die("Conexión fallida: " . mysqli_connect_error());
 }
+?>

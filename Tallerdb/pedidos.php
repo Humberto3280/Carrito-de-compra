@@ -9,7 +9,7 @@ if (!isset($_SESSION['usuario_id'])) {
 
 // Función para obtener pedidos del usuario
 function obtenerPedidos($conn, $usuario_id) {
-    $sql = "SELECT p.id, p.nombre, pd.cantidad, pd.fecha
+    $sql = "SELECT p.id, p.nombre, pd.cantidad, pd.fecha, pd.id as pedido_id
             FROM tbl_pedidos pd
             JOIN tbl_productos p ON pd.producto_id = p.id
             WHERE pd.usuario_id = $usuario_id";
@@ -53,6 +53,11 @@ function obtenerPedidos($conn, $usuario_id) {
         </nav>
         <div class="mt-4">
             <h2>Tus Pedidos</h2>
+            <?php if (isset($_GET['msg'])): ?>
+                <div class="alert alert-info">
+                    <?php echo htmlspecialchars($_GET['msg']); ?>
+                </div>
+            <?php endif; ?>
             <?php
             $pedidos = obtenerPedidos($conn, $_SESSION['usuario_id']);
             if (mysqli_num_rows($pedidos) > 0): ?>
@@ -63,6 +68,7 @@ function obtenerPedidos($conn, $usuario_id) {
                             <th>Nombre del Producto</th>
                             <th>Cantidad</th>
                             <th>Fecha</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -72,6 +78,11 @@ function obtenerPedidos($conn, $usuario_id) {
                                 <td><?php echo $pedido['nombre']; ?></td>
                                 <td><?php echo $pedido['cantidad']; ?></td>
                                 <td><?php echo $pedido['fecha']; ?></td>
+                                <td>
+                                    <a href="eliminar_pedido.php?id=<?php echo $pedido['pedido_id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que quieres eliminar este pedido?');">
+                                        <i class="fas fa-trash"></i> Eliminar
+                                    </a>
+                                </td>
                             </tr>
                         <?php endwhile; ?>
                     </tbody>
